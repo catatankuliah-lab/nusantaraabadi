@@ -1,0 +1,16 @@
+{
+  "name": "SPK Karyawan Terbaik | CV Nusantara Abadi",
+  "short_name": "SPK Karyawan Terbaik | CV Nusantara Abadi",
+  "description": "SPK Pemilihan Karyawan Terbaik | CV Nusantara Abadi",
+  "icons": [
+    {
+      "src": "../img/kriteria.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/",
+  "display": "fullscreen",
+  "theme_color": "#343A3F",
+  "background_color": "#343A3F"
+}
