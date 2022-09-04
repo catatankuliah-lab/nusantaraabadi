@@ -134,8 +134,8 @@
                                             <label class="form-check-label" for="">80</label>
                                         </div>
                                         <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="radio" id="" value="100" name="r<?= $no ?>" />
-                                            <label class="form-check-label" for="">100</label>
+                                            <input class="form-check-input" type="radio" id="" value="99" name="r<?= $no ?>" />
+                                            <label class="form-check-label" for="">99</label>
                                         </div>
                                     </div>
                                 </div>
@@ -220,14 +220,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label for="dataNamaKriteria" class="form-control-label">Total</label>
-                            <input class="form-control" type="text" id="ptotal" readonly />
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="tombolUpdate">Update</button>
@@ -262,20 +254,81 @@
 <script>
     function coba() {
 
+        // AMBIL VALUE DARI BULAN DAN TAHUN
         var bulan = $('#tambahBulan').val();
         var tahun = $('#tambahTahun').val();
 
+        // SET JUDUL PENILAIAN SESUAI BULAN DAN TAHUN
         document.getElementById('pbulan').innerHTML = bulan;
         document.getElementById('ptahun').innerHTML = tahun;
 
+        // AMBIL DATA DENGAN AJAX
         $.ajax({
             url: "<?= site_url("/manager/penilaian/") ?>" + bulan + "/" + tahun,
             type: "GET",
             success: function(hasil) {
                 var obj = $.parseJSON(hasil);
-                console.log(obj);
+
+                // PILIH TABEL YANG AKAN DI MODIFIKASI
                 $("#tablepenilaian").html("");
-                jQuery.each(obj, function(i, val) {
+
+                // VARIABLE n UNTUK LOOPING DATA PENILAIAN
+                var n = 0;
+
+                // AMBIL BOBOT MASING MASING KRITERIA
+                var nC1 = obj.datakriteria[0].bobot;
+                var nC2 = obj.datakriteria[1].bobot;
+                var nC3 = obj.datakriteria[2].bobot;
+                var nC4 = obj.datakriteria[3].bobot;
+                var nC5 = obj.datakriteria[4].bobot;
+
+                // MENCARI NIALAI TERBESAR MASING MASING KRITERIA
+                let terbesarC1 = 0;
+                for (let i = 0; i < obj.datapenilaian.length; i++) {
+                    if (terbesarC1 <= obj.datapenilaian[i].c1) {
+                        terbesarC1 = obj.datapenilaian[i].c1;
+                    }
+                }
+
+                let terbesarC2 = 0;
+                for (let i = 0; i < obj.datapenilaian.length; i++) {
+                    if (terbesarC2 <= obj.datapenilaian[i].c2) {
+                        terbesarC2 = obj.datapenilaian[i].c2;
+                    }
+                }
+
+                let terbesarC3 = 0;
+                for (let i = 0; i < obj.datapenilaian.length; i++) {
+                    if (terbesarC3 <= obj.datapenilaian[i].c3) {
+                        terbesarC3 = obj.datapenilaian[i].c3;
+                    }
+                }
+
+                let terbesarC4 = 0;
+                for (let i = 0; i < obj.datapenilaian.length; i++) {
+                    if (terbesarC4 <= obj.datapenilaian[i].c4) {
+                        terbesarC4 = obj.datapenilaian[i].c4;
+                    }
+                }
+
+                let terbesarC5 = 0;
+                for (let i = 0; i < obj.datapenilaian.length; i++) {
+                    if (terbesarC5 <= obj.datapenilaian[i].c5) {
+                        terbesarC5 = obj.datapenilaian[i].c5;
+                    }
+                }
+
+                // MEMBUAT TABEL SESUAI DENGAN DATA BULAN DAN TAHUN YANG DIPILIH
+                jQuery.each(obj.datapenilaian, function() {
+
+                    var hasilC1 = (obj.datapenilaian[n].c1 / terbesarC1) * (nC1 / 100);
+                    var hasilC2 = (obj.datapenilaian[n].c2 / terbesarC2) * (nC2 / 100);
+                    var hasilC3 = (obj.datapenilaian[n].c3 / terbesarC3) * (nC3 / 100);
+                    var hasilC4 = (obj.datapenilaian[n].c4 / terbesarC4) * (nC4 / 100);
+                    var hasilC5 = (obj.datapenilaian[n].c5 / terbesarC5) * (nC5 / 100);
+                    var hasilTotal = hasilC1 + hasilC2 + hasilC3 + hasilC4 + hasilC5;
+                    hasilTotal = hasilTotal.toFixed(2)
+
                     var kosong = "";
                     kosong += '<tr>';
                     kosong += '<td>';
@@ -284,33 +337,32 @@
                     kosong += '<img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"/>';
                     kosong += '</div>';
                     kosong += '<div class="d-flex flex-column justify-content-center">';
-                    kosong += '<h6 class="mb-0 text-sm" id="namapenilaian">' + val.nama_lengkap + '</h6>';
+                    kosong += '<h6 class="mb-0 text-sm" id="namapenilaian">' + obj.datapenilaian[n].nama_lengkap + '</h6>';
                     kosong += '<p class="text-xs text-secondary mb-0" id="posisipenilaian">';
-                    kosong += '' + val.posisi + '';
+                    kosong += '' + obj.datapenilaian[n].posisi + '';
                     kosong += '</p>';
                     kosong += '</div>';
                     kosong += '</div>';
                     kosong += '</td>';
                     kosong += '<td>';
                     kosong += '<div class="text-sm text-center">';
-                    kosong += '<span id="totalpenilaian">' + val.total + '</span>';
+                    kosong += '<span id="totalpenilaian">' + hasilTotal + '</span>';
                     kosong += '</div>';
                     kosong += '</td>';
                     kosong += '<td >';
                     kosong += '<div class="text-end me-3">';
-                    kosong += '<button type = "button" class = "btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target = "#modalDetailNilai"><i class = "ni ni-zoom-split-in text-dark" onclick="detailModel(' + val.id_p + ')" ></i></button>';
+                    kosong += '<button type = "button" class = "btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target = "#modalDetailNilai"><i class = "ni ni-zoom-split-in text-dark" onclick="detailModel(' + obj.datapenilaian[n].id_p + ')" ></i></button>';
                     kosong += '</div>';
                     kosong += '</td>';
                     kosong += '</tr>';
                     $("#tablepenilaian").append(kosong);
+                    n++;
                 });
             }
         });
     }
 
     function detailModel($idp) {
-
-        console.log($idp);
 
         $.ajax({
             url: "<?= site_url("/manager/detail") ?>/" + $idp,
@@ -325,7 +377,6 @@
                 $('#pc3').val(obj[0].c3);
                 $('#pc4').val(obj[0].c4);
                 $('#pc5').val(obj[0].c5);
-                $('#ptotal').val(obj[0].total);
             }
         });
     }
@@ -335,11 +386,6 @@
         var bulan = $('#tambahBulan').val();
         var tahun = $('#tambahTahun').val();
         var tambahNama = $('#tambahNama').val();
-        var tambahB1 = parseFloat($('#b1').val());
-        var tambahB2 = parseFloat($('#b2').val());
-        var tambahB3 = parseFloat($('#b3').val());
-        var tambahB4 = parseFloat($('#b4').val());
-        var tambahB5 = parseFloat($('#b5').val());
         var tambahC1 = 0;
         var tambahC2 = 0;
         var tambahC3 = 0;
@@ -350,14 +396,6 @@
         tambahC3 = parseFloat($("input[name='r3']:checked").val());
         tambahC4 = parseFloat($("input[name='r4']:checked").val());
         tambahC5 = parseFloat($("input[name='r5']:checked").val());
-
-        var hasilC1 = (tambahC1 / 100) * (tambahB1 / 100);
-        var hasilC2 = (tambahC2 / 100) * (tambahB2 / 100);
-        var hasilC3 = (tambahC3 / 100) * (tambahB3 / 100);
-        var hasilC4 = (tambahC4 / 100) * (tambahB4 / 100);
-        var hasilC5 = (tambahC5 / 100) * (tambahB5 / 100);
-
-        var hasilTotal = hasilC1 + hasilC2 + hasilC3 + hasilC4 + hasilC5;
 
         $.ajax({
             url: "<?= site_url("/manager/tambahpenilaian") ?>",
@@ -371,7 +409,6 @@
                 c3: tambahC3,
                 c4: tambahC4,
                 c5: tambahC5,
-                total: hasilTotal
             },
             success: function(hasil) {
                 var $obj = $.parseJSON(hasil);
@@ -391,8 +428,6 @@
             }
         });
     });
-
-    
 </script>
 
 

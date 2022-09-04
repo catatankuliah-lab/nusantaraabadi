@@ -12,6 +12,7 @@ class PenilaianController extends BaseController
     function __construct()
     {
         $this->model = new PenilaianModel();
+        $this->kriteria = new KriteriaModel();
     }
 
     public function index()
@@ -33,7 +34,6 @@ class PenilaianController extends BaseController
 
     public function detail($id)
     {
-        // return json_encode($this->model->find($id));
         $query = $this->model->pilih($id);
         $data = ($query->getResult());
 
@@ -87,8 +87,8 @@ class PenilaianController extends BaseController
     {
 
         $query = $this->model->seleksi($bulan, $tahun);
-        $data = ($query->getResult());
-
+        $data['datapenilaian'] = ($query->getResult());
+        $data['datakriteria'] = $this->kriteria->findAll();
         return json_encode($data);
     }
 

@@ -44,15 +44,14 @@
     <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link <?= $aktif1 ?>" href="dashboard">
-            <i class="ni ni-tv-2 text-info text-sm"></i>
+          <a class="nav-link <?= $aktif1 ?>" href="<?= base_url('/manager/dashboard') ?>"><i class="ni ni-tv-2 text-info text-sm"></i>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link <?= $aktif2 ?>" href="http://localhost:8080/manager/kriteria">
+          <a class="nav-link <?= $aktif2 ?>" href="<?= base_url('/manager/kriteria') ?>">
             <i class="ni ni-check-bold text-danger text-sm"></i>
             <span class="nav-link-text ms-1">Kriteria</span>
           </a>
@@ -60,7 +59,7 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link <?= $aktif3 ?>" href="http://localhost:8080/manager/karyawan">
+          <a class="nav-link <?= $aktif3 ?>" href="<?= base_url('/manager/karyawan') ?>">
             <i class="ni ni-single-02 text-success text-sm"></i>
             <span class="nav-link-text ms-1">Karyawan</span>
           </a>
@@ -68,7 +67,7 @@
       </ul>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link <?= $aktif4 ?>" href="http://localhost:8080/manager/penilaian">
+          <a class="nav-link <?= $aktif4 ?>" href="<?= base_url('/manager/penilaian') ?>">
             <i class="ni ni-bullet-list-67 text-warning text-sm"></i>
             <span class="nav-link-text ms-1">Penilaian</span>
           </a>

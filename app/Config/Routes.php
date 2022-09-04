@@ -47,8 +47,8 @@ $routes->get('/direktur/karyawan', 'Direktur\KaryawanController::index');
 $routes->add('/direktur/karyawan/detail/(:any)', 'Direktur\KaryawanController::detail/$1');
 $routes->get('/direktur/penilaian', 'Direktur\UserController::index');
 
-$routes->get('/manager', 'Manager\KriteriaController::index');
-$routes->get('/manager/dashboard', 'Manager\KriteriaController::index');
+$routes->get('/manager', 'Manager\DashboardController::index');
+$routes->get('/manager/dashboard', 'Manager\DashboardController::index');
 $routes->get('/manager/kriteria', 'Manager\KriteriaController::index');
 $routes->add('/manager/kriteria/detail/(:any)', 'Manager\KriteriaController::detail/$1');
 $routes->add('/manager/kriteria/edit/(:any)', 'Manager\KriteriaController::edit/$1');

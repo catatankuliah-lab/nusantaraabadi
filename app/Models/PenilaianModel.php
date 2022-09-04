@@ -9,7 +9,7 @@ class PenilaianModel extends Model
     protected $table = "penilaian";
     protected $primaryKey = "id_p";
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['bulan', 'tahun', 'id_karyawan', 'c1', 'c2', 'c3', 'c4', 'c5', 'total'];
+    protected $allowedFields = ['bulan', 'tahun', 'id_karyawan', 'c1', 'c2', 'c3', 'c4', 'c5'];
 
     public function seleksi($bulan, $tahun)
     {
