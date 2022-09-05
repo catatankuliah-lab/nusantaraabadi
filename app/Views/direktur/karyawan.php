@@ -8,8 +8,8 @@
                 <div class="d-flex align-items-center">
                     <p class="mb-0">Data Karyawan</p>
                 </div>
-                    <hr class="horizontal dark" />
-                </div>
+                <hr class="horizontal dark" />
+            </div>
             <div class="table-responsive p-0">
                 <table class="table align-items-center mb-0">
                     <thead>
@@ -21,27 +21,27 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($datanya as $data): ?>
-                        <tr>
-                            <td>
-                            <div class="d-flex px-2 py-1">
-                                <div>
-                                    <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1"/>
-                                </div>
-                                <div class="d-flex flex-column justify-content-center">
-                                    <h6 class="mb-0 text-sm"><?=$data['nama_lengkap'] ?></h6>
-                                    <p class="text-xs text-secondary mb-0">
-                                        <?=$data['posisi'] ?>
-                                    </p>
-                                </div>
-                            </div>
-                            </td>
-                            <td>
-                            <div class="text-end me-3">
-                                <button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detail(<?=$data['id'];?>)" id="tombolDetail"><i class="ni ni-zoom-split-in text-dark me-2" aria-hidden="true"></i>Detail</button>
-                            </div>
-                            </td>
-                        </tr>
+                        <?php foreach ($datanya as $data) : ?>
+                            <tr>
+                                <td>
+                                    <div class="d-flex px-2 py-1">
+                                        <div>
+                                            <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1" />
+                                        </div>
+                                        <div class="d-flex flex-column justify-content-center">
+                                            <h6 class="mb-0 text-sm"><?= $data['nama_lengkap'] ?></h6>
+                                            <p class="text-xs text-secondary mb-0">
+                                                <?= $data['posisi'] ?>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="text-end me-3">
+                                        <button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detail(<?= $data['id']; ?>)" id="tombolDetail"><i class="ni ni-zoom-split-in text-dark me-2" aria-hidden="true"></i>Detail</button>
+                                    </div>
+                                </td>
+                            </tr>
                         <?php endforeach ?>
                     </tbody>
                 </table>
@@ -52,7 +52,7 @@
 
 <!-- Modal Disni -->
 <!-- Modal Detail-->
-<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true" >
+<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -66,7 +66,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="detailNama" class="form-control-label">Nama Lengkap</label>
-                            <input class="form-control" type="text" placeholder="Nama Lengkap" id="detailNama" readonly/>
+                            <input class="form-control" type="text" placeholder="Nama Lengkap" id="detailNama" readonly />
                         </div>
                     </div>
                 </div>
@@ -77,11 +77,11 @@
                             <div class="row mt-1">
                                 <div class="col-12">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="detailJKL" value="Laki-Laki" name="detailJK" disabled/>
+                                        <input class="form-check-input" type="radio" id="detailJKL" value="Laki-Laki" name="detailJK" disabled />
                                         <label class="form-check-label" for="detailJKL">Laki-Laki</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="detailJKP" value="Perempuan" name="detailJK" disabled/>
+                                        <input class="form-check-input" type="radio" id="detailJKP" value="Perempuan" name="detailJK" disabled />
                                         <label class="form-check-label" for="detailJKP">Perempuan</label>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <label for="detailNomor" class="form-control-label">Nomor Telpon</label>
-                            <input class="form-control" type="email" placeholder="000000000000" id="detailNomor" readonly/>
+                            <input class="form-control" type="email" placeholder="000000000000" id="detailNomor" readonly />
                         </div>
                     </div>
                 </div>
@@ -104,14 +104,13 @@
 <!-- End Modal -->
 
 <script>
-
     function detail($id) {
         $.ajax({
-            url: "<?= site_url("/direktur/karyawan/detail")?>/" + $id,
+            url: "<?= site_url("/direktur/karyawan/detail") ?>/" + $id,
             type: "GET",
             success: function(hasil) {
                 var $obj = $.parseJSON(hasil);
-                if($obj.jenis_kelamin == "Laki-Laki") {
+                if ($obj.jenis_kelamin == "Laki-Laki") {
                     $('#detailJKL').prop('checked', true);
                 } else {
                     $('#detailJKP').prop('checked', true);
@@ -122,7 +121,6 @@
 
         });
     }
-
 </script>
 
 <?= $this->endSection(); ?>

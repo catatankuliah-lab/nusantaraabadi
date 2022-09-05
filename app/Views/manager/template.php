@@ -4,21 +4,21 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="apple-touch-icon" sizes="76x76" href="<?php echo base_url('assets/img/apple-icon.png') ?>" />
-  <link rel="icon" type="image/png" href="<?php echo base_url('assets/favicon.png') ?>" />
+  <link rel="apple-touch-icon" sizes="76x76" href="<?= base_url('assets/img/apple-icon.png') ?>" />
+  <link rel="icon" type="image/png" href="<?= base_url('assets/favicon.png') ?>" />
   <title><?= $judul ?></title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->
-  <link href="<?php echo base_url('assets/css/nucleo-icons.css') ?>" rel="stylesheet" />
-  <link href="<?php echo base_url('assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
+  <link href="<?= base_url('assets/css/nucleo-icons.css') ?>" rel="stylesheet" />```
+  <link href="<?= base_url('assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js')?>" crossorigin="anonymous"></script>
-  <link href="<?php echo base_url('assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
+  <link href="<?= base_url('assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="<?php echo base_url('assets/css/soft-ui-dashboard.css?v=1.0.6') ?>" rel="stylesheet" />
+  <link id="pagestyle" href="<?= base_url('assets/css/soft-ui-dashboard.css?v=1.0.6') ?>" rel="stylesheet" />
   <!-- jQuery -->
-  <script src="<?php echo base_url('assets/js/core/jquery-3.6.0.min.js') ?>"></script>
+  <script src="<?= base_url('assets/js/core/jquery-3.6.0.min.js') ?>"></script>
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -26,7 +26,7 @@
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
       <a class="navbar-brand m-0" href="#">
-        <img src="<?php echo base_url('assets/img/logo-ct-dark.png') ?>" class="navbar-brand-img h-100" alt="main_logo" />
+        <img src="<?= base_url('assets/img/logo-ct-dark.png') ?>" class="navbar-brand-img h-100" alt="main_logo" />
         <span class="ms-1 font-weight-bold">CV Nusantara Abadi</span>
       </a>
     </div>
@@ -113,15 +113,15 @@
     </div>
   </main>
   <!--   Core JS Files   -->
-  <script src="<?php echo base_url('assets/js/core/popper.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/js/core/bootstrap.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/js/plugins/perfect-scrollbar.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/js/plugins/smooth-scrollbar.min.js') ?>"></script>
-  <script src="<?php echo base_url('assets/js/plugins/chartjs.min.js') ?>"></script>
+  <script src="<?= base_url('assets/js/core/popper.min.js') ?>"></script>
+  <script src="<?= base_url('assets/js/core/bootstrap.min.js') ?>"></script>
+  <script src="<?= base_url('assets/js/plugins/perfect-scrollbar.min.js') ?>"></script>
+  <script src="<?= base_url('assets/js/plugins/smooth-scrollbar.min.js') ?>"></script>
+  <script src="<?= base_url('assets/js/plugins/chartjs.min.js') ?>"></script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="<?php echo base_url('assets/js/soft-ui-dashboard.min.js?v=1.0.6') ?>"></script>
+  <script src="<?= base_url('assets/js/soft-ui-dashboard.min.js?v=1.0.6') ?>"></script>
 </body>
 
 </html>

@@ -7,29 +7,29 @@ use App\Models\UserModel;
 
 class UserController extends BaseController
 {
-    function __construct()
+	function __construct()
 	{
 		$this->model = new \App\Models\UserModel();
 	}
 
-    public function index()
-    {
-        $data = [
-            'judul' => 'SPK | CV Nusantara Abadi',
-            'halaman' => 'Manager',
-            'aktif1' => '',
-            'aktif2' => 'active',
-            'aktif3' => '',
-            'aktif4' => '',
-        ];
-        $model = new UserModel();
-        $data['datanya'] = $model->findAll();
-        return view('direktur/user', $data);
-    }
+	public function index()
+	{
+		$data = [
+			'judul' => 'SPK | CV Nusantara Abadi',
+			'halaman' => 'Manager',
+			'aktif1' => '',
+			'aktif2' => 'active',
+			'aktif3' => '',
+			'aktif4' => '',
+		];
+		$model = new UserModel();
+		$data['datanya'] = $model->findAll();
+		return view('direktur/user', $data);
+	}
 
-    public function create()
-    {
-        $validasi  = \Config\Services::validation();
+	public function create()
+	{
+		$validasi  = \Config\Services::validation();
 		$aturan = [
 			'email' => [
 				'label' => 'Email',
@@ -40,7 +40,7 @@ class UserController extends BaseController
 					'valid_email' => 'Email yang kamu masukkan tidak valid'
 				]
 			],
-            'password' => [
+			'password' => [
 				'label' => 'Password',
 				'rules' => 'required|min_length[5]',
 				'errors' => [
@@ -48,7 +48,7 @@ class UserController extends BaseController
 					'min_length' => 'Minimum karakter untuk field {field} adalah 5 karakter'
 				]
 			],
-            'nama_lengkap' => [
+			'nama_lengkap' => [
 				'label' => 'Nama Lengkap',
 				'rules' => 'required|min_length[5]',
 				'errors' => [
@@ -65,42 +65,40 @@ class UserController extends BaseController
 				]
 			],
 		];
-        
-        $validasi->setRules($aturan);
 
-        $isDataValid = $validasi->withRequest($this->request)->run();
+		$validasi->setRules($aturan);
 
-        if($isDataValid){
-            $model = new UserModel();
-            $model->insert([
-                "email" => $this->request->getPost('email'),
-                "password" => $this->request->getPost('password'),
-                "nama_lengkap" => $this->request->getPost('nama_lengkap'),
-                "nomor_telepon" => $this->request->getPost('nomor_telepon')
-            ]);
+		$isDataValid = $validasi->withRequest($this->request)->run();
+
+		if ($isDataValid) {
+			$model = new UserModel();
+			$model->insert([
+				"email" => $this->request->getPost('email'),
+				"password" => $this->request->getPost('password'),
+				"nama_lengkap" => $this->request->getPost('nama_lengkap'),
+				"nomor_telepon" => $this->request->getPost('nomor_telepon')
+			]);
 
 			$hasil['sukses'] = true;
 			$hasil['error'] = false;
+		} else {
 
-        } else {
-
-            $hasil['sukses'] = false;
+			$hasil['sukses'] = false;
 			$hasil['error'] = $validasi->listErrors();
-
-        }
+		}
 
 		return json_encode($hasil);
-    }
+	}
 
 	public function detail($id)
-    {
-        return json_encode($this->model->find($id));
-    }
+	{
+		return json_encode($this->model->find($id));
+	}
 
 
-    public function edit($id)
-    {
-        $validasi  = \Config\Services::validation();
+	public function edit($id)
+	{
+		$validasi  = \Config\Services::validation();
 		$aturan = [
 			'email' => [
 				'label' => 'Email',
@@ -111,7 +109,7 @@ class UserController extends BaseController
 					'valid_email' => 'Email yang kamu masukkan tidak valid'
 				]
 			],
-            'password' => [
+			'password' => [
 				'label' => 'Password',
 				'rules' => 'required|min_length[5]',
 				'errors' => [
@@ -119,7 +117,7 @@ class UserController extends BaseController
 					'min_length' => 'Minimum karakter untuk field {field} adalah 5 karakter'
 				]
 			],
-            'nama_lengkap' => [
+			'nama_lengkap' => [
 				'label' => 'Nama Lengkap',
 				'rules' => 'required|min_length[5]',
 				'errors' => [
@@ -136,36 +134,35 @@ class UserController extends BaseController
 				]
 			],
 		];
-        
-        $validasi->setRules($aturan);
 
-        $isDataValid = $validasi->withRequest($this->request)->run();
+		$validasi->setRules($aturan);
 
-        if($isDataValid){
-            $model = new UserModel();
-            $model->update($id, [
-                "email" => $this->request->getPost('email'),
-                "password" => $this->request->getPost('password'),
-                "nama_lengkap" => $this->request->getPost('nama_lengkap'),
-                "nomor_telepon" => $this->request->getPost('nomor_telepon')
-            ]);
+		$isDataValid = $validasi->withRequest($this->request)->run();
 
-            $hasil['sukses'] = true;
+		if ($isDataValid) {
+			$model = new UserModel();
+			$model->update($id, [
+				"email" => $this->request->getPost('email'),
+				"password" => $this->request->getPost('password'),
+				"nama_lengkap" => $this->request->getPost('nama_lengkap'),
+				"nomor_telepon" => $this->request->getPost('nomor_telepon')
+			]);
+
+			$hasil['sukses'] = true;
 			$hasil['error'] = false;
+		} else {
 
-        } else {
-
-            $hasil['sukses'] = false;
+			$hasil['sukses'] = false;
 			$hasil['error'] = $validasi->listErrors();
-
-        }
+		}
 
 		return json_encode($hasil);
-    }
-
-    public function delete($id)
-	{
-		$this->model->delete($id);
 	}
 
+	public function delete($id)
+	{
+		$hasil['sukses'] = true;
+		$hasil['error'] = false;
+		$this->model->delete($id);
+	}
 }
