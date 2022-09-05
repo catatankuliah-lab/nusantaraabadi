@@ -37,7 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/direktur', 'Direktur\UserController::index');
-$routes->get('/direktur/dashboard', 'Direktur\UserController::index');
+$routes->get('/direktur/dashboard', 'Direktur\DashboardController::index');
 $routes->get('/direktur/users', 'Direktur\UserController::index');
 $routes->add('/direktur/users/create', 'Direktur\UserController::create');
 $routes->add('/direktur/users/detail/(:any)', 'Direktur\UserController::detail/$1');
@@ -45,7 +45,7 @@ $routes->add('/direktur/users/edit/(:any)', 'Direktur\UserController::edit/$1');
 $routes->add('/direktur/users/delete/(:any)', 'Direktur\UserController::delete/$1');
 $routes->get('/direktur/karyawan', 'Direktur\KaryawanController::index');
 $routes->add('/direktur/karyawan/detail/(:any)', 'Direktur\KaryawanController::detail/$1');
-$routes->get('/direktur/penilaian', 'Direktur\UserController::index');
+$routes->get('/direktur/penilaian', 'Direktur\PenilaianController::index');
 
 $routes->get('/manager', 'Manager\DashboardController::index');
 $routes->get('/manager/dashboard', 'Manager\DashboardController::index');

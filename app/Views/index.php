@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SPK | Nusantara Abadi</title>
-    <meta name="theme-color" content="#343A3F" />
-    <link rel="manifest" href="/assets/js/web.webmanifest" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/apple-icon.png"/>
-    <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
-    <!--     Fonts and icons     -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
-      rel="stylesheet"
-    />
-    <!-- Nucleo Icons -->
-    <link href="/assets/css/nucleo-icons.css" rel="stylesheet" />
-    <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- Font Awesome Icons -->
-    <script
-      src="https://kit.fontawesome.com/42d5adcbca.js"
-      crossorigin="anonymous"
-    ></script>
-    <link href="/assets/css/nucleo-svg.css" rel="stylesheet" />
-    <!-- CSS Files -->
-    <link
-      id="pagestyle"
-      href="/assets/css/soft-ui-dashboard.css?v=1.0.6"
-      rel="stylesheet"
-    />
-    <!-- jQuery -->
-    <script src="../assets/js/core/jquery-3.6.0.min.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPK | Nusantara Abadi</title>
+  <meta name="theme-color" content="#343A3F" />
+  <link rel="manifest" href="assets/js/web.webmanifest" />
+  <link rel="apple-touch-icon" sizes="76x76" href="assets/img/apple-icon.png" />
+  <link rel="shortcut icon" type="image/png" href="favicon.ico" />
+  <!--     Fonts and icons     -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <!-- Nucleo Icons -->
+  <link href="assets/css/nucleo-icons.css" rel="stylesheet" />
+  <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <link href="assets/css/nucleo-svg.css" rel="stylesheet" />
+  <!-- CSS Files -->
+  <link id="pagestyle" href="assets/css/soft-ui-dashboard.css?v=1.0.6" rel="stylesheet" />
+  <!-- jQuery -->
+  <script src="assets/js/core/jquery-3.6.0.min.js"></script>
 </head>
+
 <body class="">
   <main class="main-content  mt-0">
     <section>
@@ -87,10 +79,10 @@
   </footer>
   <!-- -------- END FOOTER 3 w/ COMPANY DESCRIPTION WITH LINKS & SOCIAL ICONS & COPYRIGHT ------- -->
   <!--   Core JS Files   -->
-  <script src="/assets/js/core/popper.min.js"></script>
-  <script src="/assets/js/core/bootstrap.min.js"></script>
-  <script src="/assets/js/plugins/perfect-scrollbar.min.js"></script>
-  <script src="/assets/js/plugins/smooth-scrollbar.min.js"></script>
+  <script src="assets/js/core/popper.min.js"></script>
+  <script src="assets/js/core/bootstrap.min.js"></script>
+  <script src="assets/js/plugins/perfect-scrollbar.min.js"></script>
+  <script src="assets/js/plugins/smooth-scrollbar.min.js"></script>
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -103,20 +95,22 @@
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="/assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
-  <script src="/assets/js/register.js"></script>
+  <script src="assets/js/soft-ui-dashboard.min.js?v=1.0.6"></script>
+  <script src="assets/js/register.js">
+  </script>
   <script>
-      function login() {
-        var username = document.getElementById("username").value;
-        var password = document.getElementById("password").value;
-        if (username == "direktur" && password == "direktur") {
-          location.href = "direktur/";
-        } else if (username == "manager" && password == "manager") {
-          location.href = "manager/";
-        } else {
-          location.reload();
-        }
+    function login() {
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      if (username == "direktur" && password == "direktur") {
+        location.href = "direktur/";
+      } else if (username == "manager" && password == "manager") {
+        location.href = "manager/";
+      } else {
+        location.reload();
       }
-    </script>
+    }
+  </script>
 </body>
+
 </html>
