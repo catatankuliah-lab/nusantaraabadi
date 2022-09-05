@@ -38,7 +38,7 @@
                                 </td>
                                 <td>
                                     <div class="text-end me-3">
-                                        <button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detail(<?= $data['id']; ?>)" id="tombolDetail"><i class="ni ni-zoom-split-in text-dark me-2" aria-hidden="true"></i>Detail</button>
+                                        <button type="button" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalDetail" onclick="detail(<?= $data['id']; ?>)" id="tombolDetail"><i class="ni ni-zoom-split-in text-dark me-2" aria-hidden="true" data-bs-toggle="tooltip" data-bs-placement="left" title="Detail Data"></i></button>
                                     </div>
                                 </td>
                             </tr>
