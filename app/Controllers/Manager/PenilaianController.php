@@ -36,7 +36,6 @@ class PenilaianController extends BaseController
     {
         $query = $this->model->pilih($id);
         $data = ($query->getResult());
-
         return json_encode($data);
     }
 

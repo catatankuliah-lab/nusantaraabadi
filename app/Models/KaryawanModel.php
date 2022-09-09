@@ -9,5 +9,5 @@ class KaryawanModel extends Model
     protected $table = "karyawan";
     protected $primaryKey = "id";
     protected $useAutoIncrement = true;
-    protected $allowedFields = ['nama_lengkap', 'jenis_kelamin','nomor_telepon','tanggal_masuk','posisi'];
+    protected $allowedFields = ['nama_lengkap', 'jenis_kelamin', 'nomor_telepon', 'tanggal_masuk', 'posisi'];
 }
