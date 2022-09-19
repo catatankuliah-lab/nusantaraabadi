@@ -51,8 +51,112 @@
     <div class="col-lg-12 mb-lg-0 mb-4">
         <div class="card">
             <div class="card-header p-3">
-                <div class="d-flex align-items-center">
-                    <p class="mb-0">Penilaian <span id="pbulan"></span> <span id="ptahun"></span></p>
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class=" mb-0">Karyawan Terbaik <span id="pbulan"></span> <span id="ptahun"></span></p>
+                </div>
+                <hr class="horizontal dark" />
+            </div>
+            <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                    <thead>
+                        <tr>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                Karyawan
+                            </th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">
+                                Total Poin
+                            </th>
+                            <th class="text-secondary opacity-7"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="terbaik">
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1" />
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm" id="namapenilaian"><span id="namaterpilih1"></span></h6>
+                                        <p class="text-xs text-secondary mb-0">
+                                            <span id="posisiterpilih1"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-center">
+                                    <span id="nilaiterpilih1"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-end me-3">
+                                    <button type="button" id="b1" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalDetailNilai"><i class="ni ni-zoom-split-in text-dark"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1" />
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm" id="namapenilaian"><span id="namaterpilih2"></span></h6>
+                                        <p class="text-xs text-secondary mb-0">
+                                            <span id="posisiterpilih2"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-center">
+                                    <span id="nilaiterpilih2"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-end me-3">
+                                    <button type="button" id="b2" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalDetailNilai"><i class="ni ni-zoom-split-in text-dark"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex px-2 py-1">
+                                    <div>
+                                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" alt="user1" />
+                                    </div>
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <h6 class="mb-0 text-sm" id="namapenilaian"><span id="namaterpilih3"></span></h6>
+                                        <p class="text-xs text-secondary mb-0">
+                                            <span id="posisiterpilih3"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-sm text-center">
+                                    <span id="nilaiterpilih3"></span>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-end me-3">
+                                    <button type="button" id="b3" class="btn btn-link text-dark px-3 mb-0" data-bs-toggle="modal" data-bs-target="#modalDetailNilai"><i class="ni ni-zoom-split-in text-dark"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-lg-12 mb-lg-0 mb-4">
+        <div class="card">
+            <div class="card-header p-3">
+                <div class="d-flex align-items-center justify-content-between">
+                    <p class=" mb-0">Penilaian <span id="pbulan"></span> <span id="ptahun"></span></p>
+                    <a onclick="kePrint()" class="text-dark"><i class="fas fa-light fa-print " data-bs-toggle="tooltip" data-bs-placement="left" title="Print Data"></i></a>
                 </div>
                 <hr class="horizontal dark" />
             </div>
@@ -218,10 +322,6 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" id="tombolUpdate">Update</button>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalHapus">Delete</button>
-            </div>
         </div>
     </div>
 </div>
@@ -249,7 +349,27 @@
 
 
 <script>
+    var rank = [];
+
     function coba() {
+        document.getElementById('posisiterpilih1').innerHTML = "";
+        document.getElementById('namaterpilih1').innerHTML = "";
+        document.getElementById('nilaiterpilih1').innerHTML = "";
+        document.getElementById('b1').addEventListener("click", function() {
+            detailModel();
+        }, false);
+        document.getElementById('posisiterpilih2').innerHTML = "";
+        document.getElementById('namaterpilih2').innerHTML = "";
+        document.getElementById('nilaiterpilih2').innerHTML = "";
+        document.getElementById('b2').addEventListener("click", function() {
+            detailModel();
+        }, false);
+        document.getElementById('posisiterpilih3').innerHTML = "";
+        document.getElementById('namaterpilih3').innerHTML = "";
+        document.getElementById('nilaiterpilih3').innerHTML = "";
+        document.getElementById('b3').addEventListener("click", function() {
+            detailModel();
+        }, false);
 
         // AMBIL VALUE DARI BULAN DAN TAHUN
         var bulan = $('#tambahBulan').val();
@@ -325,7 +445,7 @@
                     var hasilC5 = (obj.datapenilaian[n].c5 / terbesarC5) * (nC5 / 100);
                     var hasilTotal = hasilC1 + hasilC2 + hasilC3 + hasilC4 + hasilC5;
                     hasilTotal = hasilTotal.toFixed(2)
-
+                    rank[n] = [hasilTotal, obj.datapenilaian[n].nama_lengkap, obj.datapenilaian[n].posisi, obj.datapenilaian[n].id_p];
                     var kosong = "";
                     kosong += '<tr>';
                     kosong += '<td>';
@@ -355,6 +475,7 @@
                     $("#tablepenilaian").append(kosong);
                     n++;
                 });
+                printRank();
             }
         });
     }
@@ -425,6 +546,39 @@
             }
         });
     });
+
+    function kePrint() {
+        var bulan = $('#tambahBulan').val();
+        var tahun = $('#tambahTahun').val();
+        window.location = "<?= site_url("/direktur/penilaian/print/") ?>" + bulan + "/" + tahun;
+    }
+
+    function printRank() {
+        rank.sort();
+        var n = rank.length - 1;
+        var id1 = parseInt(rank[n][3], 10)
+        var id2 = parseInt(rank[n - 1][3], 10)
+        var id3 = parseInt(rank[n - 2][3], 10)
+        document.getElementById('posisiterpilih1').innerHTML = rank[n][2];
+        document.getElementById('namaterpilih1').innerHTML = rank[n][1];
+        document.getElementById('nilaiterpilih1').innerHTML = rank[n][0];
+        document.getElementById('b1').addEventListener("click", function() {
+            detailModel(id1);
+        }, false);
+        document.getElementById('posisiterpilih2').innerHTML = rank[n - 1][2];
+        document.getElementById('namaterpilih2').innerHTML = rank[n - 1][1];
+        document.getElementById('nilaiterpilih2').innerHTML = rank[n - 1][0];
+        document.getElementById('b2').addEventListener("click", function() {
+            detailModel(id2);
+        }, false);
+        document.getElementById('posisiterpilih3').innerHTML = rank[n - 2][2];
+        document.getElementById('namaterpilih3').innerHTML = rank[n - 2][1];
+        document.getElementById('nilaiterpilih3').innerHTML = rank[n - 2][0];
+        document.getElementById('b3').addEventListener("click", function() {
+            detailModel(id3);
+        }, false);
+        rank.splice(0, rank.length);
+    }
 </script>
 
 

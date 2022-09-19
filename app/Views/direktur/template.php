@@ -9,8 +9,9 @@
   <title><?= $judul ?></title>
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+
   <!-- Nucleo Icons -->
-  <link href="assets/css/nucleo-icons.css') ?>" rel="stylesheet" />
+  <link href="<?= base_url('assets/css/nucleo-icons.css') ?>" rel="stylesheet" />
   <link href="<?= base_url('assets/css/nucleo-svg.css') ?>" rel="stylesheet" />
   <!-- Font Awesome Icons -->
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -33,9 +34,9 @@
     <div class="" id="">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active" href="#">
+          <a class="nav-link active" href="#" data-bs-toggle="modal" data-bs-target="#modalout">
             <i class="ni ni-circle-08 text-primary text-sm"></i>
-            <span class="nav-link-text ms-1">Nama User Disini</span>
+            <span class="nav-link-text ms-1">Kevin Elsy Jona</span>
           </a>
         </li>
       </ul>
@@ -106,6 +107,25 @@
         </div>
       </div>
     </nav>
+    <!-- MODAL HAPUS -->
+    <div class="modal fade" id="modalout" tabindex="-1" aria-labelledby="modalout" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalout">Logout</h5>
+            <button type="button" class="btn-close text-dark" data-bs-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Apakah Anda Yakin ?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" id="tombolHapus" data-dismiss="modal" onclick="kelogout()">Yakin</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- End Navbar -->
     <div class="container-fluid py-4">
 
@@ -114,6 +134,12 @@
     </div>
 
   </main>
+
+  <script>
+    function kelogout() {
+      window.location = "<?= base_url('/logout') ?>"
+    }
+  </script>
   <!--   Core JS Files   -->
   <script src="../assets/js/core/popper.min.js"></script>
   <script src="../assets/js/core/bootstrap.min.js"></script>

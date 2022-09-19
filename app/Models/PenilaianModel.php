@@ -14,7 +14,7 @@ class PenilaianModel extends Model
     public function seleksi($bulan, $tahun)
     {
         $db      = \Config\Database::connect();
-        $query   = $db->query("SELECT * FROM penilaian JOIN karyawan ON karyawan.id = penilaian.id_karyawan WHERE bulan = '$bulan' AND tahun = '$tahun'");
+        $query   = $db->query("SELECT * FROM penilaian JOIN karyawan ON karyawan.id = penilaian.id_karyawan WHERE bulan = '$bulan' AND tahun = '$tahun' ORDER BY karyawan.nama_lengkap ASC");
         return $query;
     }
 

@@ -39,4 +39,17 @@ class PenilaianController extends BaseController
 
         return json_encode($data);
     }
+
+    public function print($bulan, $tahun)
+    {
+        $query = $this->model->seleksi($bulan, $tahun);
+        session()->set([
+            'bulan' => $bulan,
+            'tahun' => $tahun
+        ]);
+        $data['penilaian'] = $query->getResult();
+        $data['kriteria'] = $this->kriteria->findAll();
+        // print_r($data);
+        return view('direktur/print', $data);
+    }
 }

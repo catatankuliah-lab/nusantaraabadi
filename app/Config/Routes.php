@@ -46,6 +46,7 @@ $routes->add('/direktur/users/delete/(:any)', 'Direktur\UserController::delete/$
 $routes->get('/direktur/karyawan', 'Direktur\KaryawanController::index');
 $routes->add('/direktur/karyawan/detail/(:any)', 'Direktur\KaryawanController::detail/$1');
 $routes->get('/direktur/penilaian', 'Direktur\PenilaianController::index');
+$routes->get('/direktur/penilaian/print/(:any)/(:any)', 'Direktur\PenilaianController::print/$1/$2');
 
 $routes->get('/manager', 'Manager\DashboardController::index');
 $routes->get('/manager/dashboard', 'Manager\DashboardController::index');
@@ -61,6 +62,8 @@ $routes->get('/manager/penilaian', 'Manager\PenilaianController::index');
 $routes->add('/manager/penilaian/(:any)/(:any)', 'Manager\PenilaianController::tambah/$1/$2');
 $routes->add('/manager/detail/(:any)', 'Manager\PenilaianController::detail/$1');
 $routes->add('/manager/tambahpenilaian', 'Manager\PenilaianController::tambahPenilaian');
+
+$routes->get('/logout', 'Home::logout');
 
 
 /*
